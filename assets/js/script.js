@@ -1,12 +1,13 @@
+const contenedor = document.getElementById('container')
+let getlocalStorageTema = localStorage.getItem("classTema")
+
 const dark = document.getElementById('dark')
 const light = document.getElementById('light')
 const yellow = document.getElementById('yellow')
 const olive = document.getElementById('olive')
 
-if(localStorage.getItem("classTema") != null){
-
-    let tema = localStorage.getItem("classTema")
-    document.getElementById('container').classList.add(tema)
+if(getlocalStorageTema != null){
+    contenedor.classList.add(getlocalStorageTema)
 }
 
 dark.addEventListener('click', ()=>{
@@ -25,11 +26,26 @@ olive.addEventListener('click', ()=>{
     cambiarTema('olive')
 })
 
+/*
 function cambiarTema(valorClase){
     // remover todas las clases de temas
-    document.getElementById('container').setAttribute("class", "container")
-    document.getElementById('container').classList.add(valorClase)
+    contenedor.setAttribute("class", "container")
+    contenedor.classList.add(valorClase)
 
     // almacenar en localStorage tema dark
     localStorage.setItem("classTema", valorClase);
+}
+*/
+
+const cambiarTema= (valorClase)=>{
+     // remover todas las clases de temas
+     // Opcion1
+     //contenedor.className = "container " + valorClase
+
+     // Opcion2
+     contenedor.setAttribute("class", "container")
+     contenedor.classList.add(valorClase)
+
+     // almacenar en localStorage el tema seleccionado
+     localStorage.setItem("classTema", valorClase);
 }
